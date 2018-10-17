@@ -6,16 +6,14 @@ parameters:
 
 
 application:
-	scanDirs: false
-	errorPresenter: Error
-	mapping:
-		rest: Travidence\Rest\Controllers\*Controller
-		*: Travidence\*Module\Presenters\*Presenter
+    scanDirs: false
+    errorPresenter: Error
+    mapping:
+        *: Travidence\*Module\Presenters\*Presenter
 
 
 session:
 	expiration: 14 days
-
 
 
 services:

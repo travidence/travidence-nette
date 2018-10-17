@@ -4,6 +4,7 @@ namespace Travidence\Model;
 
 
 use Travidence\Entity\Trip;
+use Travidence\Entity\TripSegment;
 
 class TripService
 {
@@ -14,6 +15,10 @@ class TripService
 
     public function getTrip($id)
     {
-        return new Trip();
+        $trip =  new Trip();
+        $segment = new TripSegment();
+        $segment->setStartPlace("something");
+        $trip->setSegments([segment]);
+
     }
 }

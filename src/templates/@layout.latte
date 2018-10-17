@@ -23,6 +23,7 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
+    <link rel="stylesheet" href="{$basePath}/css/material.min.css">
     <link rel="stylesheet" href="{$basePath}/css/style.css">
     {block head}{/block}
 </head>
@@ -31,10 +32,7 @@
 <div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
 
 {include content}
-
-{block scripts}
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="https://nette.github.io/resources/js/netteForms.min.js"></script>
+{block script}
     <script src="{$basePath}/js/main.js"></script>
 {/block}
 </body>

@@ -22,8 +22,9 @@ class TripPresenter extends BasePresenter
         return new TripFormControl();
     }
 
-    public function renderTripSummary($id)
+    public function renderSummary($id)
     {
         $trip = $this->tripService->getTrip($id);
+
     }
 }

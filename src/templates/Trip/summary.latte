@@ -1,0 +1,158 @@
+{block content}
+
+    <h1>Cestovní příkaz</h1>
+    <div class="">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Jméno</th>
+                <th scope="col">Přijmení</th>
+                <th scope="col">Místo výkonu práce</th>
+                <th scope="col">Oddělení</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Jméno</td>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+            </tr>
+            </tbody>
+        </table>
+
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Datum</th>
+            <th scope="col"></th>
+            <th scope="col">Místo</th>
+            <th scope="col">Čas</th>
+            <th scope="col">Účel cesty</th>
+            <th scope="col">Dopravní prostředek</th>
+            <th scope="col">Vzdálenost</th>
+            <th scope="col">Doba řízení</th>
+            <th scope="col">Vedlejší výdaje</th>
+            <th scope="col">Nocležné</th>
+            <th scope="col">Počet jídel</th>
+            <th scope="col">Stravné</th>
+            <th scope="col">Kalkulované jízdné</th>
+            <th scope="col">Celkem</th>
+        </tr>
+        </thead>
+        <tbody>
+        {foreach $trip->segments as $segment}
+        <tr>
+            <td rowspan="2">{$segment->getStartDate()}</td>
+            <td>Odjezd</td>
+            <td>{$segment->getStartPlace()}</td>
+            <td>Larry</td>
+            <td rowspan="2">{$segment->getPurpose()}</td>
+            <td rowspan="2">{$segment->getMeanOfTransport()}</td>
+            <td rowspan="2">{$segment->getExtra()->getDistance()}</td>
+            <td rowspan="2">{$segment->getExtra()->getDriveTime()}</td>
+            <td rowspan="2">{$segment->getExtra()->getExpenses()->getOtherExpenses()}</td>
+            <td rowspan="2">{$segment->getExtra()->getExpenses()->getBeddingExpenses()}</td>
+            <td rowspan="2">{$segment->getExtra()->getExpenses()->getFoodServings()}</td>
+            <td rowspan="2">{$segment->getExtra()->getExpenses()->getFoodExpenses()}</td>
+            <td rowspan="2">{$segment->getExtra()->getExpenses()->getBeddingExpenses()}</td>
+            <td rowspan="2">Larry</td>
+        </tr>
+        <tr>
+            <td>Příjezd</td>
+            <td>{$segment->getEndPlace()}</td>
+            <td></td>
+        </tr>
+
+        {/foreach}
+
+
+        <tr>
+            <td colspan="8">Celkem</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td colspan="11">Záloha</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td colspan="11">Doplatek / Přeplatek</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        </tbody>
+
+
+    </table>
+
+
+        <h3>
+            Vyúčtování pracovní cesty
+        </h3>
+        <table class="table table-striped">
+
+            <tbody>
+            <tr>
+                <td>Spolucestující</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Vyplacená záloha</td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Částka k vyplacení</th>
+                <th scope="col">Číslo BÚ</th>
+                <th scope="col">Číslo banky</th>
+                <th scope="col">Vyúčtoval</th>
+                <th scope="col">Schválil</th>
+                <th scope="col">Proplatil</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td></td>
+                <td>Dne:</td>
+                <td>Dne:</td>
+                <td>Dne:</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="2">Datum a podpis účtovatele</td>
+                <td colspan="3"></td>
+            </tr>
+            </tbody>
+        </table>
+
+{/block}
