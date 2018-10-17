@@ -19,7 +19,7 @@ final class RouterFactory
 	{
 		$router = new RouteList;
 
-		$router[] = RestRouter::createRouter('rest', 'api/v1/');
+		$router[] = RestRouter::createRouter('rest', 'api/');
 
 		$router[] = new Route('<presenter>/<action>', 'Trip:createNew');
 		return $router;
