@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Router;
+namespace Travidence\Router;
 
 use Nette;
 use Nette\Application\Routers\Route;

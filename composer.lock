@@ -4,37 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5ab562fbddba2eba461bfdbe24d47d3e",
+    "content-hash": "3439e10e77e8d9d55052885813be4a09",
     "packages": [
-        {
-            "name": "dg/adminer-custom",
-            "version": "v1.15.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/dg/adminer-custom.git",
-                "reference": "fe6d5800d85aef697d110a83aaa863bbd2c2b965"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/dg/adminer-custom/zipball/fe6d5800d85aef697d110a83aaa863bbd2c2b965",
-                "reference": "fe6d5800d85aef697d110a83aaa863bbd2c2b965",
-                "shasum": ""
-            },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "description": "Customization for Adminer, the best database management tool written in PHP.",
-            "keywords": [
-                "database",
-                "elasticsearch",
-                "mongodb",
-                "mssql",
-                "mysql",
-                "oracle",
-                "postgresql",
-                "sqlite"
-            ],
-            "time": "2018-06-29T10:30:14+00:00"
-        },
         {
             "name": "latte/latte",
             "version": "v2.4.8",
@@ -399,78 +370,6 @@
                 "nette"
             ],
             "time": "2018-03-20T16:32:50+00:00"
-        },
-        {
-            "name": "nette/database",
-            "version": "v2.4.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nette/database.git",
-                "reference": "b7b1b990abdc612d45f5dd6fe24618329768f864"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nette/database/zipball/b7b1b990abdc612d45f5dd6fe24618329768f864",
-                "reference": "b7b1b990abdc612d45f5dd6fe24618329768f864",
-                "shasum": ""
-            },
-            "require": {
-                "ext-pdo": "*",
-                "nette/caching": "^2.2",
-                "nette/utils": "^2.4",
-                "php": ">=5.6.0"
-            },
-            "conflict": {
-                "nette/nette": "<2.2"
-            },
-            "require-dev": {
-                "mockery/mockery": "^1.0.0",
-                "nette/di": "^2.4 || ~3.0.0",
-                "nette/tester": "^2.0",
-                "tracy/tracy": "^2.4"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.4-dev"
-                }
-            },
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause",
-                "GPL-2.0",
-                "GPL-3.0"
-            ],
-            "authors": [
-                {
-                    "name": "David Grudl",
-                    "homepage": "https://davidgrudl.com"
-                },
-                {
-                    "name": "Nette Community",
-                    "homepage": "https://nette.org/contributors"
-                }
-            ],
-            "description": "💾 Nette Database: layer with a familiar PDO-like API but much more powerful. Building queries, advanced joins, drivers for MySQL, PostgreSQL, SQLite, MS SQL Server and Oracle.",
-            "homepage": "https://nette.org",
-            "keywords": [
-                "database",
-                "mssql",
-                "mysql",
-                "nette",
-                "notorm",
-                "oracle",
-                "pdo",
-                "postgresql",
-                "queries",
-                "sqlite"
-            ],
-            "time": "2018-10-16T12:52:07+00:00"
         },
         {
             "name": "nette/di",
@@ -997,71 +896,6 @@
                 "reflection"
             ],
             "time": "2017-07-11T19:28:57+00:00"
-        },
-        {
-            "name": "nette/robot-loader",
-            "version": "v3.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nette/robot-loader.git",
-                "reference": "fc76c70e740b10f091e502b2e393d0be912f38d4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nette/robot-loader/zipball/fc76c70e740b10f091e502b2e393d0be912f38d4",
-                "reference": "fc76c70e740b10f091e502b2e393d0be912f38d4",
-                "shasum": ""
-            },
-            "require": {
-                "ext-tokenizer": "*",
-                "nette/finder": "^2.3 || ^3.0",
-                "nette/utils": "^2.4 || ^3.0",
-                "php": ">=5.6.0"
-            },
-            "conflict": {
-                "nette/nette": "<2.2"
-            },
-            "require-dev": {
-                "nette/tester": "^2.0",
-                "tracy/tracy": "^2.3"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.1-dev"
-                }
-            },
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause",
-                "GPL-2.0",
-                "GPL-3.0"
-            ],
-            "authors": [
-                {
-                    "name": "David Grudl",
-                    "homepage": "https://davidgrudl.com"
-                },
-                {
-                    "name": "Nette Community",
-                    "homepage": "https://nette.org/contributors"
-                }
-            ],
-            "description": "🍀 Nette RobotLoader: high performance and comfortable autoloader that will search and autoload classes within your application.",
-            "homepage": "https://nette.org",
-            "keywords": [
-                "autoload",
-                "class",
-                "interface",
-                "nette",
-                "trait"
-            ],
-            "time": "2018-08-13T14:19:06+00:00"
         },
         {
             "name": "nette/safe-stream",

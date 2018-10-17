@@ -22,13 +22,10 @@ final class UserManager implements Nette\Security\IAuthenticator
 		COLUMN_ROLE = 'role';
 
 
-	/** @var Nette\Database\Context */
-	private $database;
 
-
-	public function __construct(Nette\Database\Context $database)
+	public function __construct()
 	{
-		$this->database = $database;
+
 	}
 
 

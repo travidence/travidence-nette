@@ -6,21 +6,16 @@ parameters:
 
 
 application:
+	scanDirs: false
 	errorPresenter: Error
 	mapping:
+		rest: Travidence\Rest\Controllers\*Controller
 		*: Travidence\*Module\Presenters\*Presenter
 
 
 session:
 	expiration: 14 days
 
-
-database:
-	dsn: 'mysql:host=127.0.0.1;dbname=test'
-	user:
-	password:
-	options:
-		lazy: yes
 
 
 services:
