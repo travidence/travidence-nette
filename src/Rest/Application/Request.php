@@ -3,6 +3,8 @@
 namespace Travidence\Rest\Application;
 
 
+use Nette\InvalidStateException;
+
 class Request extends \Nette\Application\Request
 {
     const BODY_READ_RAW = 'raw';
@@ -48,6 +50,11 @@ class Request extends \Nette\Application\Request
     public function getJsonBody() {
         $body = $this->getBody();
 
-        return json_decode($body, true) ?: [];
+        $data = json_decode($body, true);
+        if(!$data) {
+            throw new InvalidStateException("Body contains malformed json");
+        }
+
+        return $data;
     }
 }

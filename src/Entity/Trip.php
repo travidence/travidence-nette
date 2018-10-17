@@ -3,6 +3,14 @@
 namespace Travidence\Entity;
 
 
+/**
+ * Class Trip
+ * @package Travidence\Entity
+ *
+ * @property Person $traveller
+ * @property TripSegment[] $segments
+ * @property string[] $note
+ */
 class Trip extends BaseEntity
 {
     /** @var Person */
@@ -25,7 +33,7 @@ class Trip extends BaseEntity
     /**
      * @param Person $traveller
      */
-    public function setTraveller(Person $traveller): void
+    public function setTraveller(Person $traveller = null): void
     {
         $this->traveller = $traveller;
     }
@@ -41,7 +49,7 @@ class Trip extends BaseEntity
     /**
      * @param TripSegment[] $segments
      */
-    public function setSegments(array $segments): void
+    public function setSegments(array $segments = []): void
     {
         $this->segments = $segments;
     }

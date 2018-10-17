@@ -3,6 +3,15 @@
 namespace Travidence\Entity;
 
 
+/**
+ * Class Person
+ * @package Travidence\Entity
+ *
+ * @property string $name
+ * @property string $surname
+ * @property string $department
+ * @property string $workStation
+ */
 class Person extends BaseEntity
 {
     /** @var string */

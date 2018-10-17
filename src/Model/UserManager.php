@@ -25,7 +25,7 @@ final class UserManager implements Nette\Security\IAuthenticator
 
 	public function __construct()
 	{
-
+        
 	}
 
 
