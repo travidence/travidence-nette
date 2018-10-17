@@ -89,5 +89,13 @@ class TripSegmentExpenses extends BaseEntity
         return $this->beddingExpenses + $this->foodExpenses + $this->otherExpenses;
     }
 
+    public function asArray()
+    {
+        $data = parent::asArray();
+        $data['total'] = $this->getTotalExpenses();
+
+        return $data;
+    }
+
 
 }
