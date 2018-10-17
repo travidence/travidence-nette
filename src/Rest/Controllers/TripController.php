@@ -1,15 +1,13 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Skoro
- * Date: 17.10.2018
- * Time: 12:01
- */
 
 namespace Travidence\Rest\Controllers;
 
 
-class TripController
+class TripController extends ARestController
 {
-
+    public function actionGet() {
+        dump($this->request);
+        $data = $this->request->getJsonBody();
+        dump($data); exit;
+    }
 }

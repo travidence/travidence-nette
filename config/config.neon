@@ -24,3 +24,6 @@ services:
 	- Travidence\Forms\SignInFormFactory
 	- Travidence\Forms\SignUpFormFactory
 	router: Travidence\Router\RouterFactory::createRouter
+
+	- Travidence\Rest\Application\JsonStatusResponder
+	- Travidence\Rest\Application\ResponseCreator
