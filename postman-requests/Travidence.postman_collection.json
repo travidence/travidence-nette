@@ -1,0 +1,33 @@
+{
+	"info": {
+		"_postman_id": "9b7f6924-15c5-454b-b553-3bc1b22ee5e7",
+		"name": "Travidence",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add trip",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"trip\": {\n    \"traveller\": {\n      \"name\": \"Bruno\",\n      \"surname\": \"Hewie\",\n      \"department\": \"Finance\",\n      \"workStation\": \"yippie-kay-ay\"\n    },\n    \"segments\": [\n      {\n        \"startDate\": \"2018-4-20,\n        \"todo\"\n      }\n    ]\n  }\n}"
+				},
+				"url": {
+					"raw": "http://travidence.local/api/trip",
+					"protocol": "http",
+					"host": [
+						"travidence",
+						"local"
+					],
+					"path": [
+						"api",
+						"trip"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
