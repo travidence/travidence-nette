@@ -8,7 +8,7 @@ parameters:
 application:
 	errorPresenter: Error
 	mapping:
-		*: App\*Module\Presenters\*Presenter
+		*: Travidence\*Module\Presenters\*Presenter
 
 
 session:
@@ -24,8 +24,8 @@ database:
 
 
 services:
-	- App\Model\UserManager
-	- App\Forms\FormFactory
-	- App\Forms\SignInFormFactory
-	- App\Forms\SignUpFormFactory
-	router: App\Router\RouterFactory::createRouter
+	- Travidence\Model\UserManager
+	- Travidence\Forms\FormFactory
+	- Travidence\Forms\SignInFormFactory
+	- Travidence\Forms\SignUpFormFactory
+	router: Travidence\Router\RouterFactory::createRouter

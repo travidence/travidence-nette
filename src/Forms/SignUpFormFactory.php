@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Forms;
+namespace Travidence\Forms;
 
-use App\Model;
+use Travidence\Model;
 use Nette;
 use Nette\Application\UI\Form;
 

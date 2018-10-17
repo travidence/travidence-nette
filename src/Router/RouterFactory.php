@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Router;
+namespace Travidence\Router;
 
 use Nette;
 use Nette\Application\Routers\Route;
@@ -17,7 +17,8 @@ final class RouterFactory
 	public static function createRouter()
 	{
 		$router = new RouteList;
-		$router[] = new Route('<presenter>/<action>', 'Homepage:default');
+        $router[] = new Route('trip[/createNew[/]]', 'Trip:createNew');
+        $router[] = new Route('<presenter>[/<action>[/]]', 'Homepage:default');
 		return $router;
 	}
 }

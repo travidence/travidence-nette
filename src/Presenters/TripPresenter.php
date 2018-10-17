@@ -3,7 +3,9 @@
 namespace Travidence\Presenters;
 
 
-class TripPresenter
+class TripPresenter extends BasePresenter
 {
+    public function renderCreateNew() {
 
+    }
 }
