@@ -10,6 +10,7 @@ namespace Travidence\Components;
 
 
 use Nette\Application\UI\Control;
+use Nette\Application\UI\Form;
 
 class TripSegmentControl extends Control
 {
@@ -18,11 +19,15 @@ class TripSegmentControl extends Control
         // vložíme do šablony nějaké parametry
         //$this->template->param = $value;
         // a vykreslíme ji
+
         $this->template->render(__DIR__ . '/tripForm.latte');
     }
 
     public function createComponentTripRow() {
+
         return new TripFormControl();
     }
+
+
 
 }
