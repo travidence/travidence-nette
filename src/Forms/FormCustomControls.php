@@ -23,7 +23,12 @@ trait FormCustomControls
         /** @var TextInput $control */
         $control = $this->addText($name, $label);
         $control->setAttribute('type', 'number');
-
+        if(is_numeric($min)) {
+            $control->setAttribute('min', $min);
+        }
+        if(is_numeric($max)) {
+            $control->setAttribute('max', $max);
+        }
 
         return $control;
     }

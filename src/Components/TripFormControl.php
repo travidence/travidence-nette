@@ -18,10 +18,12 @@ class TripFormControl extends Control
     public function createComponentForm()
     {
         $form = (new FormFactory())->create();
-        $form->addText("name", "Jméno");
-        $form->addText("lastname", "Přijmení");
-        $form->addText("work_place", "Místo výkonu práce");
-        $form->addText("department", "Oddělení");
+
+        $traveller = $form->addContainer('traveller');
+        $traveller->addText("name", "Jméno");
+        $traveller->addText("surname", "Přijmení");
+        $traveller->addText("work_place", "Místo výkonu práce");
+        $traveller->addText("department", "Oddělení");
 
         $segment = $form->addContainer('segment');
         $segment->addDate("date", "Datum");
@@ -34,17 +36,16 @@ class TripFormControl extends Control
         $segment->addText("meanOfTransport", "Použitý dopravní prostředek");
 
         $segment->addNumber("distance", "Vzdálenost");
-        $segment->addText("driveTime", "Doba řízení");
-        $segment->addText("usedFuel", "Spotřeba");
+        $segment->addTime("driveTime", "Doba řízení");
+        $segment->addNumber("usedFuel", "Spotřeba", 0)
+            ->setAttribute('step', 0.1);
         $segment->addText("licensePlate", "Registrační značka");
 
         $expenses = $segment->addContainer('expenses');
-        $expenses->addText("otherExpenses", "Vedlejší výdaje");
-        $expenses->addText("beddingExpenses", "Nocležné");
-        $expenses->addText("foodServings", "Počet poskytovaných služeb");
-        $expenses->addText("foodExpenses", "Stravné");
-
-
+        $expenses->addNumber("otherExpenses", "Vedlejší výdaje", 0);
+        $expenses->addNumber("beddingExpenses", "Nocležné", 0);
+        $expenses->addNumber("foodServings", "Počet poskytovaných služeb", 0);
+        $expenses->addNumber("foodExpenses", "Stravné", 0);
 
         $form->addSubmit("submit", "K Tisku");
         return $form;

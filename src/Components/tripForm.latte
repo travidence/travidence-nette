@@ -1,76 +1,78 @@
 {form form}
     <div class="row">
-        <div class="col">
-            {include inputPair.latte, control => name, css => "col-md-6"}
-            {include inputPair.latte, control => work_place, css => "col-md-6"}
-        </div>
-        <div class="col">
-            {include inputPair.latte, control => lastname, css => "col-md-6"}
-            {include inputPair.latte, control => department, css => "col-md-6"}
-        </div>
-
+        {include inputPair.latte, control => traveller-name, css => "col-md-6"}
+        {include inputPair.latte, control => traveller-surname, css => "col-md-6"}
+        {include inputPair.latte, control => traveller-work_place, css => "col-md-6"}
+        {include inputPair.latte, control => traveller-department, css => "col-md-6"}
     </div>
 
     <div class="trip-segments">
-        <div class="row">
-            <div class="first">
+        <div class="card">
+            <div class="card-header">
+                <h3>Segment cesty</h3>
+            </div>
+            <div class="card-body">
                 <div class="row">
                     {include inputPair.latte, control => segment-date, css => "col-md-6"}
-                </div>
-
-                <div class="row">
                     {include inputPair.latte, control => segment-purpose, css => "col-md-6"}
-                </div>
-                <div class="row">
-                    {include inputPair.latte, control => segment-startPlace, css => "col-md-6"}
-                    {include inputPair.latte, control => segment-startTime, css => "col-md-6"}
-                </div>
-                <div class="row">
-                    {include inputPair.latte, control => segment-endPlace, css => "col-md-6"}
-                    {include inputPair.latte, control => segment-endTime, css => "col-md-6"}
-                </div>
-            </div>
-            <div class="second">
-                <div class="row">
+
+                    <div class="form-group col-sm-12">
+                        <label>Odjezd</label>
+                        <div class="row">
+                            <div class="col-md-8">
+                                {input segment-startPlace, class => 'form-control'}
+                            </div>
+                            <div class="col-md-4">
+                                {input segment-startTime, class => 'form-control'}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-12">
+                        <label>Příjezd</label>
+                        <div class="row">
+                            <div class="col-md-8">
+                                {input segment-endPlace, class => 'form-control'}
+                            </div>
+                            <div class="col-md-4">
+                                {input segment-endTime, class => 'form-control'}
+                            </div>
+                        </div>
+                    </div>
+
                     {include inputPair.latte, control => segment-meanOfTransport, css => "col-md-12"}
-                </div>
-                <div class="row">
                     {include inputPair.latte, control => segment-distance, css => "col-md-12"}
-                </div>
-                <div class="row">
+
                     {include inputPair.latte, control => segment-driveTime, css => "col-md-12"}
-                </div>
-                <div class="row">
                     {include inputPair.latte, control => segment-usedFuel, css => "col-md-12"}
-                </div>
-                <div class="row">
                     {include inputPair.latte, control => segment-licensePlate, css => "col-md-12"}
+                </div>
+                <hr/>
+                <h4>Výdaje</h4>
+                <div class="row">
+                    <div class="col">
+                        {include inputPair.latte, control => segment-expenses-otherExpenses, css => "col-md-12"}
+                    </div>
+                    <div class="col">
+                        {include inputPair.latte, control => segment-expenses-beddingExpenses, css => "col-md-12"}
+                    </div>
+                    <div class="col">
+                        {include inputPair.latte, control => segment-expenses-foodExpenses, css => "col-md-12"}
+                    </div>
+                    <div class="col">
+                        {include inputPair.latte, control => segment-expenses-foodServings, css => "col-md-12"}
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col">
-                {include inputPair.latte, control => segment-expenses-otherExpenses, css => "col-md-12"}
-            </div>
-            <div class="col">
-                {include inputPair.latte, control => segment-expenses-beddingExpenses, css => "col-md-12"}
-            </div>
-            <div class="col">
-                {include inputPair.latte, control => segment-expenses-foodExpenses, css => "col-md-12"}
-            </div>
-            <div class="col">
-                {include inputPair.latte, control => segment-expenses-foodServings, css => "col-md-12"}
-            </div>
+
+        <div class="form-group text-center">
+            <input type="button" class="btn btn-outline-secondary add-segment" value="Přidat segment">
         </div>
     </div>
 
     <div class="row">
-        <div class="col">
-            <input type="button" id="addMore" class="btn btn-primary" value="Přidat záznam">
-        </div>
-        <div class="col">
+        <div class="col text-right">
             <input type="submit" class="btn btn-primary" value="K tisku">
         </div>
     </div>
-
 {/form}

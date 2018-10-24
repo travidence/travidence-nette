@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>{ifset title}{include title|stripHtml} | {/ifset}Nette Sandbox</title>
+    <title>{ifset title}{include title|stripHtml} | {/ifset}Cesťák</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -31,7 +31,14 @@
 <body>
 <div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
 
-{include content}
+<div class="container">
+    <div class="jumbotron">
+        <img src="{$basePath}/images/app/logo.svg" class="lo-logo">
+        <span class="app-name">Cesťák</span>
+    </div>
+    {include content}
+</div>
+
 {block script}
     <script src="{$basePath}/js/main.js"></script>
 {/block}
