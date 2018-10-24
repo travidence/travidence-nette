@@ -25,6 +25,10 @@ class ResponseCreator
         return $this->responseFactory->create($data, $code, JsonStatusResponder::JSON_STATUS_ERR);
     }
 
+    public function badRequest($message = 'bad_request', $data = []) {
+        return $this->error($message, IResponse::S400_BAD_REQUEST, $data);
+    }
+
     public function forbidden($message = 'forbidden', $data = [])
     {
         return $this->error($message, IResponse::S403_FORBIDDEN, $data);

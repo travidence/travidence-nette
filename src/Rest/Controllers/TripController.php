@@ -44,8 +44,7 @@ class TripController extends ARestController
             $key = $this->tripDao->store($trip);
             return ['result' => $key];
         } catch (ValidationException $ex) {
-            dump($ex->getErrors());
-            exit;
+            return $this->response->badRequest('validation_failed', $ex->getErrors());
         }
 
 

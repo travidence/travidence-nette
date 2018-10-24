@@ -13,6 +13,7 @@ use DateTime;
  * @property string              $startPlace      @required
  * @property string              $endPlace        @required
  * @property string              $meanOfTransport @required
+ * @property string              $purpose         @required
  * @property TripSegmentExtraCar $extra
  * @property TripSegmentExpenses $expenses        @required
  */
@@ -27,6 +28,9 @@ class TripSegment extends BaseEntity
     protected $startPlace;
     /** @var string */
     protected $endPlace;
+
+    /** @var string */
+    protected $purpose;
 
     /** @var string */
     protected $meanOfTransport;
@@ -130,6 +134,27 @@ class TripSegment extends BaseEntity
         $this->meanOfTransport = $meanOfTransport;
         return $this;
     }
+
+    /**
+     * @return string
+     */
+    public function getPurpose(): ?string
+    {
+        return $this->purpose;
+    }
+
+    /**
+     * @param string $purpose
+     *
+     * @return TripSegment
+     */
+    public function setPurpose(?string $purpose): TripSegment
+    {
+        $this->purpose = $purpose;
+        return $this;
+    }
+
+
 
     /**
      * @return TripSegmentExtraCar

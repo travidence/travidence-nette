@@ -43,27 +43,31 @@
         </thead>
         <tbody>
         {foreach $trip->segments as $segment}
-        <tr>
-            <td rowspan="2">{$segment->getStartDate()}</td>
-            <td>Odjezd</td>
-            <td>{$segment->getStartPlace()}</td>
-            <td>Larry</td>
-            <td rowspan="2">{$segment->getPurpose()}</td>
-            <td rowspan="2">{$segment->getMeanOfTransport()}</td>
-            <td rowspan="2">{$segment->getExtra()->getDistance()}</td>
-            <td rowspan="2">{$segment->getExtra()->getDriveTime()}</td>
-            <td rowspan="2">{$segment->getExtra()->getExpenses()->getOtherExpenses()}</td>
-            <td rowspan="2">{$segment->getExtra()->getExpenses()->getBeddingExpenses()}</td>
-            <td rowspan="2">{$segment->getExtra()->getExpenses()->getFoodServings()}</td>
-            <td rowspan="2">{$segment->getExtra()->getExpenses()->getFoodExpenses()}</td>
-            <td rowspan="2">{$segment->getExtra()->getExpenses()->getBeddingExpenses()}</td>
-            <td rowspan="2">Larry</td>
-        </tr>
-        <tr>
-            <td>Příjezd</td>
-            <td>{$segment->getEndPlace()}</td>
-            <td></td>
-        </tr>
+            <tr>
+                <td rowspan="2">{$segment->getStartDate()|date}</td>
+                <td>Odjezd</td>
+                <td>{$segment->getStartPlace()}</td>
+                <td>Larry</td>
+                <td rowspan="2">{$segment->getPurpose()}</td>
+                <td rowspan="2">{$segment->getMeanOfTransport()}</td>
+                {if $segment->extra != null}
+                    <td rowspan="2">{$segment->getExtra()->getDistance()}</td>
+                    <td rowspan="2">{$segment->getExtra()->getDriveTime()}</td>
+                {else}
+                    <td rowspan="2" colspan="2"></td>
+                {/if}
+                <td rowspan="2">{$segment->getExpenses()->getOtherExpenses()}</td>
+                <td rowspan="2">{$segment->getExpenses()->getBeddingExpenses()}</td>
+                <td rowspan="2">{$segment->getExpenses()->getFoodServings()}</td>
+                <td rowspan="2">{$segment->getExpenses()->getFoodExpenses()}</td>
+                <td rowspan="2">{$segment->getExpenses()->getBeddingExpenses()}</td>
+                <td rowspan="2">Larry</td>
+            </tr>
+            <tr>
+                <td>Příjezd</td>
+                <td>{$segment->getEndPlace()}</td>
+                <td></td>
+            </tr>
 
         {/foreach}
 
