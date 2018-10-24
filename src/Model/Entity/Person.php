@@ -1,14 +1,14 @@
 <?php
 
-namespace Travidence\Entity;
+namespace Travidence\Model\Entity;
 
 
 /**
  * Class Person
- * @package Travidence\Entity
+ * @package Travidence\Model\Entity
  *
- * @property string $name
- * @property string $surname
+ * @property string $name @required
+ * @property string $surname @required
  * @property string $department
  * @property string $workStation
  */

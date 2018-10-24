@@ -12,7 +12,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"trip\": {\n    \"traveller\": {\n      \"name\": \"Bruno\",\n      \"surname\": \"Hewie\",\n      \"department\": \"Finance\",\n      \"workStation\": \"yippie-kay-ay\"\n    },\n    \"segments\": [\n      {\n        \"startDate\": \"2018-4-20,\n        \"todo\"\n      }\n    ]\n  }\n}"
+					"raw": "{\n  \"trip\": {\n    \"traveller\": {\n      \"name\": \"Bruno\",\n      \"surname\": \"Hewie\",\n      \"department\": \"Finance\",\n      \"workStation\": \"yippie-kay-ay\"\n    },\n    \"segments\": [\n      {\n        \"start-date\": \"2018-4-20 14:40\",\n        \"end-date\": \"2018-4-20 20:05\",\n        \"start-place\": \"Plzen\",\n        \"end-place\": \"Praha\",\n        \"mean-of-transport\": \"car\",\n        \"expenses\": {\n    \t\t\"bedding-expenses\": 2000\n        },\n        \"extra\": {\n          \"distance\": 200,\n          \"drive-time\": 24,\n          \"consumption\": 7.2,\n          \"license-plate\": \"ABC-2D6F\"\n        }\n      },\n      {\n        \"start-date\": \"2018-4-20 14:40\",\n        \"end-date\": \"2018-4-20 20:05\",\n        \"start-place\": \"Plzen\",\n        \"end-place\": \"Praha\",\n        \"mean-of-transport\": \"car\",\n        \"expenses\": {\n    \t\t\"bedding-expenses\": 2000\n        },\n        \"extra\": {\n          \"distance\": 200,\n          \"drive-time\": 24,\n          \"consumption\": 7.2,\n          \"license-plate\": \"ABC-2D6F\"\n        }\n      }\n    ]\n  }\n}"
 				},
 				"url": {
 					"raw": "http://travidence.local/api/trip",

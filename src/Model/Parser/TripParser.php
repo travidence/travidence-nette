@@ -4,11 +4,11 @@ namespace Travidence\Model\Parser;
 
 
 use Nette\InvalidArgumentException;
-use Travidence\Entity\Person;
-use Travidence\Entity\Trip;
-use Travidence\Entity\TripSegment;
-use Travidence\Entity\TripSegmentExpenses;
-use Travidence\Entity\TripSegmentExtraCar;
+use Travidence\Model\Entity\Person;
+use Travidence\Model\Entity\Trip;
+use Travidence\Model\Entity\TripSegment;
+use Travidence\Model\Entity\TripSegmentExpenses;
+use Travidence\Model\Entity\TripSegmentExtraCar;
 
 class TripParser
 {
@@ -36,8 +36,6 @@ class TripParser
 
     public function parseTrip(array $data): Trip
     {
-
-
         return $this->parseGeneric(Trip::class, $data, [
             'traveller' => $this->parsers[Person::class],
             'segments' => function ($d) {
