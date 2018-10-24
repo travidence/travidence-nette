@@ -6,13 +6,13 @@ namespace Travidence\Rest\Controllers;
 use Travidence\Model\Entity\Person;
 use Travidence\Model\Entity\Trip;
 use Travidence\Model\Entity\TripSegment;
-use Travidence\Model\TripService;
+use Travidence\Model\TripDao;
 use Travidence\Model\Validator\ValidationException;
 
 class TripController extends ARestController
 {
-    /** @var TripService @inject */
-    public $tripService;
+    /** @var TripDao @inject */
+    public $tripDao;
 
     public function actionGet()
     {
@@ -40,7 +40,7 @@ class TripController extends ARestController
     {
         $data = $this->request->getJsonBody(false);
         try {
-            $trip = $this->tripService->parse($data->trip);
+            $trip = $this->tripDao->parse($data->trip);
             return $trip->asArray();
         } catch (ValidationException $ex) {
             dump($ex->getErrors());

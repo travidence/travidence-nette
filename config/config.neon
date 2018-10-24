@@ -25,7 +25,7 @@ services:
 
 	- JsonMapper
 	- Travidence\Model\Validator\AnnotatedPropertyValidator
-	- Travidence\Model\TripService
+	- Travidence\Model\TripDao
 
 	-
 	    class: Travidence\Rest\Application\JsonStatusResponder

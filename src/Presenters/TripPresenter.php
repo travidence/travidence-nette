@@ -4,18 +4,12 @@ namespace Travidence\Presenters;
 
 
 use Travidence\Components\TripFormControl;
-use Travidence\Model\TripService;
+use Travidence\Model\TripDao;
 
 class TripPresenter extends BasePresenter
 {
-    /** @var TripService */
-    private $tripService;
-
-    public function renderCreateNew()
-    {
-        // todo: use DI
-        $this->tripService = new TripService();
-    }
+    /** @var TripDao @inject */
+    public $tripDao;
 
     public function createComponentTripForm()
     {
@@ -24,7 +18,8 @@ class TripPresenter extends BasePresenter
 
     public function renderSummary($id)
     {
-        $trip = $this->tripService->getTrip($id);
+        $trip = $this->tripDao->getTrip($id);
 
+        $this->template->trip = $trip;
     }
 }

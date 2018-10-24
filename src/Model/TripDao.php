@@ -8,7 +8,7 @@ use Travidence\Entity\TripSegment;
 use Travidence\Model\Validator\AnnotatedPropertyValidator;
 use Travidence\Model\Validator\ValidationException;
 
-class TripService
+class TripDao
 {
     /** @var \JsonMapper */
     private $mapper;
