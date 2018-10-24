@@ -18,16 +18,16 @@ trait OpenDataSerializable
     private function mapValue($value)
     {
         if (is_array($value)) {
-            return array_map([$this, 'mapValue'], $value);
+            $serialized = array_map([$this, 'mapValue'], $value);
         }
 
         if (is_object($value) && method_exists($value, 'asArray')) {
-            return $value->asArray();
+            $serialized = $value->asArray();
         }
         if ($value instanceof \DateTime) {
-            return $value->format(\DateTime::W3C);
+            $serialized = $value->format(\DateTime::W3C);
         }
 
-        return $value;
+        return $serialized ?? $value;
     }
 }
