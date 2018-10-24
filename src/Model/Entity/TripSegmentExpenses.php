@@ -1,21 +1,29 @@
 <?php
 
-namespace Travidence\Entity;
+namespace Travidence\Model\Entity;
 
-
+/**
+ * Class TripSegmentExpenses
+ * @package Travidence\Model\Entity
+ *
+ * @property float $beddingExpenses
+ * @property float $foodExpenses
+ * @property int $foodServings
+ * @property float $otherExpenses
+ */
 class TripSegmentExpenses extends BaseEntity
 {
     /** @var float */
-    protected $beddingExpenses;
+    protected $beddingExpenses = 0;
 
     /** @var float */
-    protected $foodExpenses;
+    protected $foodExpenses = 0;
 
     /** @var int */
-    protected $foodServings;
+    protected $foodServings = 0;
 
     /** @var float */
-    protected $otherExpenses;
+    protected $otherExpenses = 0;
 
     /**
      * @return float

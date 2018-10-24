@@ -9,6 +9,7 @@ application:
     scanDirs: false
     errorPresenter: Error
     mapping:
+        rest: Travidence\Rest\Controllers\*Controller
         *: Travidence\*Module\Presenters\*Presenter
 
 
@@ -23,5 +24,12 @@ services:
 	- Travidence\Forms\SignUpFormFactory
 	router: Travidence\Router\RouterFactory::createRouter
 
-	- Travidence\Rest\Application\JsonStatusResponder
+	- JsonMapper
+	- Travidence\Model\Validator\AnnotatedPropertyValidator
+	- Travidence\Model\TripDao
+
+	-
+	    class: Travidence\Rest\Application\JsonStatusResponder
+	    arguments:
+	        prettyPrint: $debugMode
 	- Travidence\Rest\Application\ResponseCreator
