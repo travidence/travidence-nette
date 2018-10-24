@@ -9,6 +9,7 @@ application:
     scanDirs: false
     errorPresenter: Error
     mapping:
+        rest: Travidence\Rest\Controllers\*Controller
         *: Travidence\*Module\Presenters\*Presenter
 
 

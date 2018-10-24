@@ -3,8 +3,8 @@
 namespace Travidence\Model;
 
 
-use Travidence\Entity\Trip;
-use Travidence\Entity\TripSegment;
+use Travidence\Model\Entity\Trip;
+use Travidence\Model\Entity\TripSegment;
 use Travidence\Model\Validator\AnnotatedPropertyValidator;
 use Travidence\Model\Validator\ValidationException;
 
@@ -23,6 +23,7 @@ class TripDao
 
     /**
      * @param \stdClass $data
+     *
      * @return Trip
      *
      * @throws ValidationException
@@ -47,7 +48,7 @@ class TripDao
 
     public function getTrip($id)
     {
-        $trip =  new Trip();
+        $trip = new Trip();
         $segment = new TripSegment();
         $segment->setStartPlace("something");
         $trip->setSegments([segment]);
