@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Kanto
- * Date: 17.10.2018
- * Time: 11:51
- */
 
 namespace Travidence\Components;
 use Nette\Application\UI\Control;
@@ -28,24 +22,27 @@ class TripFormControl extends Control
         $form->addText("lastname", "Přijmení");
         $form->addText("work_place", "Místo výkonu práce");
         $form->addText("department", "Oddělení");
-        $form->addText("date", "Datum");
-        $form->addText("purpose", "Cíl cesty");
-        $form->addText("place1", "Místo");
-        $form->addText("place2", "Místo");
-        $form->addText("time1", "Čas");
-        $form->addText("time2", "Čas");
 
-        $form->addText("vehicle", "Použitý dopravní prostředek");
-        $form->addText("distance", "Vzdálenost");
-        $form->addText("driveTime", "Doba řízení");
-        $form->addText("usedFuel", "Spotřeba");
-        $form->addText("sign", "Registrační značka");
+        $segment = $form->addContainer('segment');
+        $segment->addDate("date", "Datum");
+        $segment->addText("purpose", "Cíl cesty");
+        $segment->addText("startPlace", "Místo");
+        $segment->addText("endPlace", "Místo");
+        $segment->addTime("startTime", "Čas");
+        $segment->addTime("endTime", "Čas");
 
+        $segment->addText("meanOfTransport", "Použitý dopravní prostředek");
 
-        $form->addText("extends", "Vedlejší výdaje");
-        $form->addText("overNight", "Nocležné");
-        $form->addText("numService", "Počet poskytovaných služeb");
-        $form->addText("food", "Stravné");
+        $segment->addNumber("distance", "Vzdálenost");
+        $segment->addText("driveTime", "Doba řízení");
+        $segment->addText("usedFuel", "Spotřeba");
+        $segment->addText("licensePlate", "Registrační značka");
+
+        $expenses = $segment->addContainer('expenses');
+        $expenses->addText("otherExpenses", "Vedlejší výdaje");
+        $expenses->addText("beddingExpenses", "Nocležné");
+        $expenses->addText("foodServings", "Počet poskytovaných služeb");
+        $expenses->addText("foodExpenses", "Stravné");
 
 
 

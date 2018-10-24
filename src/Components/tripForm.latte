@@ -1,6 +1,4 @@
-<span>ahoj</span>
 {form form}
-
     <div class="row">
         <div class="col">
             {include inputPair.latte, control => name, css => "col-md-6"}
@@ -13,67 +11,66 @@
 
     </div>
 
-    <div class="greyzone">
-
+    <div class="trip-segments">
         <div class="row">
             <div class="first">
                 <div class="row">
-                    {include inputPair.latte, control => date, css => "col-md-6"}
+                    {include inputPair.latte, control => segment-date, css => "col-md-6"}
                 </div>
 
                 <div class="row">
-                    {include inputPair.latte, control => purpose, css => "col-md-6"}
+                    {include inputPair.latte, control => segment-purpose, css => "col-md-6"}
                 </div>
                 <div class="row">
-                    {include inputPair.latte, control => place1, css => "col-md-6"}
-                    {include inputPair.latte, control => time1, css => "col-md-6"}
+                    {include inputPair.latte, control => segment-startPlace, css => "col-md-6"}
+                    {include inputPair.latte, control => segment-startTime, css => "col-md-6"}
                 </div>
                 <div class="row">
-                    {include inputPair.latte, control => place2, css => "col-md-6"}
-                    {include inputPair.latte, control => time2, css => "col-md-6"}
+                    {include inputPair.latte, control => segment-endPlace, css => "col-md-6"}
+                    {include inputPair.latte, control => segment-endTime, css => "col-md-6"}
                 </div>
             </div>
             <div class="second">
                 <div class="row">
-                    {include inputPair.latte, control => vehicle, css => "col-md-12"}
+                    {include inputPair.latte, control => segment-meanOfTransport, css => "col-md-12"}
                 </div>
                 <div class="row">
-                    {include inputPair.latte, control => distance, css => "col-md-12"}
+                    {include inputPair.latte, control => segment-distance, css => "col-md-12"}
                 </div>
                 <div class="row">
-                    {include inputPair.latte, control => driveTime, css => "col-md-12"}
+                    {include inputPair.latte, control => segment-driveTime, css => "col-md-12"}
                 </div>
                 <div class="row">
-                    {include inputPair.latte, control => usedFuel, css => "col-md-12"}
+                    {include inputPair.latte, control => segment-usedFuel, css => "col-md-12"}
                 </div>
                 <div class="row">
-                    {include inputPair.latte, control => sign, css => "col-md-12"}
+                    {include inputPair.latte, control => segment-licensePlate, css => "col-md-12"}
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col">
-            {include inputPair.latte, control => extends, css => "col-md-12"}
+                {include inputPair.latte, control => segment-expenses-otherExpenses, css => "col-md-12"}
             </div>
             <div class="col">
-                {include inputPair.latte, control => overNight, css => "col-md-12"}
+                {include inputPair.latte, control => segment-expenses-beddingExpenses, css => "col-md-12"}
             </div>
             <div class="col">
-                {include inputPair.latte, control => numService, css => "col-md-12"}
+                {include inputPair.latte, control => segment-expenses-foodExpenses, css => "col-md-12"}
             </div>
             <div class="col">
-                {include inputPair.latte, control => food, css => "col-md-12"}
+                {include inputPair.latte, control => segment-expenses-foodServings, css => "col-md-12"}
             </div>
         </div>
     </div>
 
     <div class="row">
         <div class="col">
-            <input type="button" id="addMore" class="btn btn-primary" value="Přidat záznam"></input>
+            <input type="button" id="addMore" class="btn btn-primary" value="Přidat záznam">
         </div>
         <div class="col">
             <input type="submit" class="btn btn-primary" value="K tisku">
         </div>
-    </div>>
+    </div>
 
 {/form}

@@ -3,7 +3,6 @@
 namespace Travidence\Forms;
 
 use Nette;
-use Nette\Application\UI\Form;
 
 
 final class FormFactory
@@ -15,7 +14,7 @@ final class FormFactory
 	 */
 	public function create()
 	{
-		$form = new Form;
+		$form = new Form();
 		return $form;
 	}
 }
