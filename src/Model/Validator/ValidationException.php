@@ -10,9 +10,9 @@ class ValidationException extends \InvalidArgumentException
     /** @var string[] */
     private $errors;
 
-    public function __construct(array $errors, string $message = "")
+    public function __construct(array $errors, string $message = "", Throwable $previous = null)
     {
-        parent::__construct($message);
+        parent::__construct($message, 0, $previous);
         $this->errors = $errors;
     }
 

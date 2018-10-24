@@ -41,12 +41,12 @@ class TripController extends ARestController
         $data = $this->request->getJsonBody(false);
         try {
             $trip = $this->tripDao->parse($data->trip);
-            return $trip->asArray();
+            $key = $this->tripDao->store($trip);
+            return ['result' => $key];
         } catch (ValidationException $ex) {
             dump($ex->getErrors());
             exit;
         }
-
 
 
     }

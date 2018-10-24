@@ -13,9 +13,12 @@ namespace Travidence\Model\Entity;
  */
 class Trip extends BaseEntity
 {
+    /** @var Person */
     protected $traveller;
+    /** @var TripSegment[] */
     protected $segments = [];
-    protected $note;
+    /** @var string */
+    protected $note = "";
 
     public function getTraveller(): ?Person
     {
@@ -50,7 +53,7 @@ class Trip extends BaseEntity
         return $this->note;
     }
 
-    public function setNote(string $note): Trip
+    public function setNote(?string $note): Trip
     {
         $this->note = $note;
         return $this;

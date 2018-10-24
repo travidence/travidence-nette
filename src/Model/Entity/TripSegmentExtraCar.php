@@ -16,21 +16,21 @@ class TripSegmentExtraCar extends BaseEntity
     /**
      * @var float
      */
-    private $distance;
+    protected $distance;
 
     /**
      * [minutes]
      * @var int
      */
-    private $driveTime;
+    protected $driveTime;
 
     /**
      * [l/100km]
      * @var float
      */
-    private $consumption;
+    protected $consumption;
     /** @var string */
-    private $licensePlate;
+    protected $licensePlate;
 
     /**
      * @return float
