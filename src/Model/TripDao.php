@@ -3,8 +3,11 @@
 namespace Travidence\Model;
 
 
+use Nette\Caching\Storages\FileStorage;
+use Nette\Utils\Json;
+use Tracy\Debugger;
+use Travidence\Exceptions\NotFoundException;
 use Travidence\Model\Entity\Trip;
-use Travidence\Model\Entity\TripSegment;
 use Travidence\Model\Validator\AnnotatedPropertyValidator;
 use Travidence\Model\Validator\ValidationException;
 
@@ -14,11 +17,14 @@ class TripDao
     private $mapper;
     /** @var AnnotatedPropertyValidator */
     private $validator;
+    /** @var FileStorage */
+    private $storage;
 
-    public function __construct(\JsonMapper $mapper, AnnotatedPropertyValidator $validator)
+    public function __construct(\JsonMapper $mapper, AnnotatedPropertyValidator $validator, FileStorage $storage)
     {
         $this->mapper = $mapper;
         $this->validator = $validator;
+        $this->storage = $storage;
     }
 
     /**
@@ -42,16 +48,43 @@ class TripDao
         } catch (\JsonMapper_Exception $ex) {
             throw new ValidationException([
                 "Validation failed due to: " . $ex->getMessage(),
-            ]);
+            ], 'Validation failed', $ex);
         }
     }
 
-    public function getTrip($id)
+    public function store(Trip $trip): string
     {
-        $trip = new Trip();
-        $segment = new TripSegment();
-        $segment->setStartPlace("something");
-        $trip->setSegments([segment]);
+        if (empty($trip->segments)) {
+            throw new ValidationException(["error.empty segments"]);
+        }
 
+        $properties = [
+            $trip->getTraveller(),
+            $trip->segments[0]->getStartDate()
+        ];
+
+        $key = md5(serialize($properties));
+
+        $this->storage->write($key, $trip->asArray(), []);
+
+        return $key;
+    }
+
+    public function getTrip(string $id): Trip
+    {
+        $serialized = $this->storage->read($id);
+        if(!$serialized) {
+            throw new NotFoundException('Trip');
+        }
+        // fixme: yuck, stdClass conversion is used for JsonMapper
+        $serObj = Json::decode(Json::encode($serialized));
+        try {
+            $trip = $this->parse($serObj);
+        } catch (ValidationException $ex) {
+            dump($ex->getErrors());
+            Debugger::exceptionHandler($ex);
+        }
+
+        return $trip;
     }
 }

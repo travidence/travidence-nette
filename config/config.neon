@@ -26,7 +26,11 @@ services:
 
 	- JsonMapper
 	- Travidence\Model\Validator\AnnotatedPropertyValidator
-	- Travidence\Model\TripDao
+
+	-
+	    class: Travidence\Model\TripDao
+	    arguments:
+	        storage: Nette\Caching\Storages\FileStorage(%tempDir%/trips)
 
 	-
 	    class: Travidence\Rest\Application\JsonStatusResponder
