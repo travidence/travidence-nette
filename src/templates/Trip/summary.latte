@@ -1,28 +1,55 @@
+{block head}
+    <style>
+        .summary-table {
+            border: 1px solid black;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .summary-table th {
+            word-wrap: break-word;
+            table-layout: fixed;
+        }
+
+        .summary-table td, .summary-table th {
+            border: 1px black;
+            padding: 2px;
+            border-style: dashed solid;
+        }
+
+        .summary-table tr.even {
+            background: #F4F4F4
+        }
+
+        tr.spacer {
+            height: 8px;
+            border: 1px black;
+            border-style: none solid;
+        }
+    </style>
+{/block}
+
 {block content}
+<h1>Cestovní příkaz</h1>
+<div>
+    <table>
+        <tr>
+            <th scope="col">Jméno</th>
+            <td>{$trip->traveller->name} {$trip->traveller->surname|upper}</td>
+        </tr>
+        <tr>
+            <th scope="col">Místo výkonu práce</th>
+            <td>{$trip->traveller->workStation}</td>
 
-    <h1>Cestovní příkaz</h1>
-    <div class="">
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th scope="col">Jméno</th>
-                <th scope="col">Přijmení</th>
-                <th scope="col">Místo výkonu práce</th>
-                <th scope="col">Oddělení</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>Jméno</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            </tbody>
-        </table>
+        </tr>
+        <tr>
+            <th scope="col">Oddělení</th>
+            <td>{$trip->traveller->department}</td>
+        </tr>
+    </table>
 
 
-    <table class="table">
+    <table class="summary-table">
         <thead>
         <tr>
             <th scope="col">Datum</th>
@@ -43,44 +70,52 @@
         </thead>
         <tbody>
         {foreach $trip->segments as $segment}
-            <tr>
-                <td rowspan="2">{$segment->getStartDate()|date}</td>
-                <td>Odjezd</td>
+            <tr n:class="$iterator->even ? even">
+                <td rowspan="2">{$segment->getStartDate()|date:'Y/m/d'}</td>
+
+                <td>Z</td>
                 <td>{$segment->getStartPlace()}</td>
-                <td>Larry</td>
+                <td>{$segment->startDate|date:'H:i'}</td>
+
                 <td rowspan="2">{$segment->getPurpose()}</td>
                 <td rowspan="2">{$segment->getMeanOfTransport()}</td>
                 {if $segment->extra != null}
                     <td rowspan="2">{$segment->getExtra()->getDistance()}</td>
                     <td rowspan="2">{$segment->getExtra()->getDriveTime()}</td>
                 {else}
-                    <td rowspan="2" colspan="2"></td>
+                    <td rowspan="2"></td>
+                    <td rowspan="2"></td>
                 {/if}
                 <td rowspan="2">{$segment->getExpenses()->getOtherExpenses()}</td>
                 <td rowspan="2">{$segment->getExpenses()->getBeddingExpenses()}</td>
                 <td rowspan="2">{$segment->getExpenses()->getFoodServings()}</td>
                 <td rowspan="2">{$segment->getExpenses()->getFoodExpenses()}</td>
                 <td rowspan="2">{$segment->getExpenses()->getBeddingExpenses()}</td>
-                <td rowspan="2">Larry</td>
+                <td rowspan="2">{$segment->expenses->total}</td>
             </tr>
-            <tr>
-                <td>Příjezd</td>
-                <td>{$segment->getEndPlace()}</td>
-                <td></td>
+            <tr n:class="$iterator->even ? even">
+                <td>Do</td>
+                <td>{$segment->endPlace}</td>
+                <td>{$segment->endDate|date:'H:i'}</td>
             </tr>
 
         {/foreach}
 
+        <tr class="spacer"></tr>
+        </tbody>
 
-        <tr>
+        <tfoot>
+        <tr style="margin=top: 2px;">
             <td colspan="8">Celkem</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>{$trip->sumExpenses('otherExpenses')}</td>
+            <td>{$trip->sumExpenses('beddingExpenses')}</td>
+            <td>{$trip->sumExpenses('foodServings')}</td>
+            <td>{$trip->sumExpenses('foodExpenses')}</td>
+            <td>{$trip->sumExpenses('total')}</td>
             <td></td>
         </tr>
+
+        <tr class="spacer"></tr>
 
         <tr>
             <td colspan="11">Záloha</td>
@@ -95,68 +130,63 @@
             <td></td>
             <td></td>
         </tr>
-        </tbody>
 
-
+        </tfoot>
     </table>
 
+    <h3>Vyúčtování pracovní cesty</h3>
+    <table class="table table-striped">
 
-        <h3>
-            Vyúčtování pracovní cesty
-        </h3>
-        <table class="table table-striped">
+        <tbody>
+        <tr>
+            <td>Spolucestující</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Vyplacená záloha</td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
 
-            <tbody>
-            <tr>
-                <td>Spolucestující</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Vyplacená záloha</td>
-                <td></td>
-            </tr>
-            </tbody>
-        </table>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Částka k vyplacení</th>
+            <th scope="col">Číslo BÚ</th>
+            <th scope="col">Číslo banky</th>
+            <th scope="col">Vyúčtoval</th>
+            <th scope="col">Schválil</th>
+            <th scope="col">Proplatil</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
 
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th scope="col">Částka k vyplacení</th>
-                <th scope="col">Číslo BÚ</th>
-                <th scope="col">Číslo banky</th>
-                <th scope="col">Vyúčtoval</th>
-                <th scope="col">Schválil</th>
-                <th scope="col">Proplatil</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-
-            <tr>
-                <td></td>
-                <td></td>
-                <td>Dne:</td>
-                <td>Dne:</td>
-                <td>Dne:</td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td colspan="2">Datum a podpis účtovatele</td>
-                <td colspan="3"></td>
-            </tr>
-            </tbody>
-        </table>
-
-{/block}
+        <tr>
+            <td></td>
+            <td></td>
+            <td>Dne:</td>
+            <td>Dne:</td>
+            <td>Dne:</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="2">Datum a podpis účtovatele</td>
+            <td colspan="3"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>

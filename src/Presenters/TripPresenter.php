@@ -18,6 +18,7 @@ class TripPresenter extends BasePresenter
 
     public function renderSummary($id)
     {
+        $this->setLayout('a4');
         $trip = $this->tripDao->getTrip($id);
 
         $this->template->trip = $trip;
