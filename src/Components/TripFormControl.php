@@ -1,7 +1,9 @@
 <?php
 
 namespace Travidence\Components;
+
 use Nette\Application\UI\Control;
+use Nette\Application\UI\Multiplier;
 use Travidence\Forms\FormFactory;
 
 
@@ -25,31 +27,17 @@ class TripFormControl extends Control
         $traveller->addText("workStation", "Místo výkonu práce");
         $traveller->addText("department", "Oddělení");
 
-        $segments = $form->addContainer('segments');
-        $segment = $segments->addContainer('0');
-        $segment->addDate("date", "Datum");
-        $segment->addText("purpose", "Cíl cesty");
-        $segment->addText("startPlace", "Místo");
-        $segment->addText("endPlace", "Místo");
-        $segment->addTime("startTime", "Čas");
-        $segment->addTime("endTime", "Čas");
-
-        $segment->addText("meanOfTransport", "Použitý dopravní prostředek");
-
-        $segment->addNumber("distance", "Vzdálenost");
-        $segment->addTime("driveTime", "Doba řízení");
-        $segment->addNumber("usedFuel", "Spotřeba", 0)
-            ->setAttribute('step', 0.1);
-        $segment->addText("licensePlate", "Registrační značka");
-
-        $expenses = $segment->addContainer('expenses');
-        $expenses->addNumber("otherExpenses", "Vedlejší výdaje", 0);
-        $expenses->addNumber("beddingExpenses", "Nocležné", 0);
-        $expenses->addNumber("foodServings", "Počet poskytovaných služeb", 0);
-        $expenses->addNumber("foodExpenses", "Stravné", 0);
+        $form['segments'] = $this->segmentsMultiplier();
 
         $form->addSubmit("submit", "K Tisku");
         return $form;
+    }
+
+    public function segmentsMultiplier()
+    {
+        return new Multiplier(function () {
+            return new TripSegmentContainer();
+        });
     }
 
 }

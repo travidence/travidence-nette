@@ -1,0 +1,58 @@
+<div class="card trip-segment">
+    <div class="card-header">
+        <a class="btn btn-sm btn-float btn-outline-warning float-right">X</a>
+        <h3>Segment cesty</h3>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            {include inputPair.latte, control => $cont[date], css => "col-md-6"}
+            {include inputPair.latte, control => $cont[purpose], css => "col-md-6"}
+
+            <div class="form-group col-sm-12">
+                <label>Odjezd</label>
+                <div class="row">
+                    <div class="col-md-8">
+                        {input $cont[startPlace], class => 'form-control'}
+                    </div>
+                    <div class="col-md-4">
+                        {input $cont[startTime], class => 'form-control'}
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-sm-12">
+                <label>Příjezd</label>
+                <div class="row">
+                    <div class="col-md-8">
+                        {input $cont[endPlace], class => 'form-control'}
+                    </div>
+                    <div class="col-md-4">
+                        {input $cont[endTime], class => 'form-control'}
+                    </div>
+                </div>
+            </div>
+
+            {include inputPair.latte, control => $cont[meanOfTransport], css => "col-md-12"}
+            {include inputPair.latte, control => $cont[distance], css => "col-md-12"}
+
+            {include inputPair.latte, control => $cont[driveTime], css => "col-md-12"}
+            {include inputPair.latte, control => $cont[usedFuel], css => "col-md-12"}
+            {include inputPair.latte, control => $cont[licensePlate], css => "col-md-12"}
+        </div>
+        <hr/>
+        <h4>Výdaje</h4>
+        <div class="row">
+            <div class="col">
+                {include inputPair.latte, control => $cont[expenses][otherExpenses], css => "col-md-12"}
+            </div>
+            <div class="col">
+                {include inputPair.latte, control => $cont[expenses][beddingExpenses], css => "col-md-12"}
+            </div>
+            <div class="col">
+                {include inputPair.latte, control => $cont[expenses][foodExpenses], css => "col-md-12"}
+            </div>
+            <div class="col">
+                {include inputPair.latte, control => $cont[expenses][foodServings], css => "col-md-12"}
+            </div>
+        </div>
+    </div>
+</div>
