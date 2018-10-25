@@ -10,7 +10,6 @@ namespace Travidence\Model\Entity;
  * @property float      $foodExpenses
  * @property int        $foodServings
  * @property float      $otherExpenses
- * @property-read float $total
  */
 class TripSegmentExpenses extends BaseEntity
 {
@@ -89,22 +88,4 @@ class TripSegmentExpenses extends BaseEntity
     {
         $this->otherExpenses = $otherExpenses;
     }
-
-    /**
-     * @return float
-     */
-    public function getTotal()
-    {
-        return $this->beddingExpenses + $this->foodExpenses + $this->otherExpenses;
-    }
-
-    public function asArray()
-    {
-        $data = parent::asArray();
-        $data['total'] = $this->getTotal();
-
-        return $data;
-    }
-
-
 }

@@ -61,8 +61,15 @@ class Trip extends BaseEntity
 
     public function sumExpenses($property): float
     {
-        return array_reduce($this->segments, function ($agg, TripSegment $segment) use ($property) {
-            return $agg + $segment->expenses->$property;
+        return array_reduce($this->segments, function ($sum, TripSegment $segment) use ($property) {
+            return $sum + $segment->expenses->$property;
+        }, 0);
+    }
+
+    public function getTotalExpenses()
+    {
+        return array_reduce($this->segments, function ($sum, TripSegment $segment) {
+            return $sum + $segment->getTotalExpenses();
         }, 0);
     }
 }

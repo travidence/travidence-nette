@@ -6,10 +6,13 @@ namespace Travidence\Model\Entity;
  * Class TripSegmentExtraCar
  * @package Travidence\Model\Entity
  *
- * @property float $distance @required
- * @property int $driveTime @required
- * @property float $consumption @required
+ * @property float  $distance     @required
+ * @property int    $driveTime    @required
+ * @property float  $consumption  @required
  * @property string $licensePlate @required
+ * @property float  $gasPrice
+ *
+ * @property-read float $expense
  */
 class TripSegmentExtraCar extends BaseEntity
 {
@@ -31,6 +34,8 @@ class TripSegmentExtraCar extends BaseEntity
     protected $consumption;
     /** @var string */
     protected $licensePlate;
+    /** @var float */
+    protected $gasPrice = 0;
 
     /**
      * @return float
@@ -106,6 +111,27 @@ class TripSegmentExtraCar extends BaseEntity
     {
         $this->licensePlate = $licensePlate;
         return $this;
+    }
+
+    /**
+     * @return float
+     */
+    public function getGasPrice(): float
+    {
+        return $this->gasPrice;
+    }
+
+    /**
+     * @param float $gasPrice
+     */
+    public function setGasPrice(float $gasPrice): void
+    {
+        $this->gasPrice = $gasPrice;
+    }
+
+    /** @return float */
+    public function getExpense() {
+        return $this->distance / $this->consumption * $this->gasPrice;
     }
 
 

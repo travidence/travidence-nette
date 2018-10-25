@@ -80,18 +80,18 @@
                 <td rowspan="2">{$segment->getPurpose()}</td>
                 <td rowspan="2">{$segment->getMeanOfTransport()}</td>
                 {if $segment->extra != null}
-                    <td rowspan="2">{$segment->getExtra()->getDistance()}</td>
-                    <td rowspan="2">{$segment->getExtra()->getDriveTime()}</td>
+                    <td rowspan="2">{$segment->getExtra()->getDistance()|number:0} km</td>
+                    <td rowspan="2">{$segment->getExtra()->getDriveTime()|number:1} h</td>
                 {else}
                     <td rowspan="2"></td>
                     <td rowspan="2"></td>
                 {/if}
-                <td rowspan="2">{$segment->getExpenses()->getOtherExpenses()}</td>
-                <td rowspan="2">{$segment->getExpenses()->getBeddingExpenses()}</td>
-                <td rowspan="2">{$segment->getExpenses()->getFoodServings()}</td>
-                <td rowspan="2">{$segment->getExpenses()->getFoodExpenses()}</td>
-                <td rowspan="2">{$segment->getExpenses()->getBeddingExpenses()}</td>
-                <td rowspan="2">{$segment->expenses->total}</td>
+                <td rowspan="2">{$segment->getExpenses()->getOtherExpenses()|number:2}</td>
+                <td rowspan="2">{$segment->getExpenses()->getBeddingExpenses()|number:2}</td>
+                <td rowspan="2">{$segment->getExpenses()->getFoodServings()|number:2}</td>
+                <td rowspan="2">{$segment->getExpenses()->getFoodExpenses()|number:2}</td>
+                <td rowspan="2" n:inner-if="$segment->extra != null">{$segment->extra->expense|number:2}</td>
+                <td rowspan="2">{$segment->getTotalExpenses()|number:2}</td>
             </tr>
             <tr n:class="$iterator->even ? even">
                 <td>Do</td>
@@ -107,12 +107,12 @@
         <tfoot>
         <tr style="margin=top: 2px;">
             <td colspan="8">Celkem</td>
-            <td>{$trip->sumExpenses('otherExpenses')}</td>
-            <td>{$trip->sumExpenses('beddingExpenses')}</td>
-            <td>{$trip->sumExpenses('foodServings')}</td>
-            <td>{$trip->sumExpenses('foodExpenses')}</td>
-            <td>{$trip->sumExpenses('total')}</td>
+            <td>{$trip->sumExpenses('otherExpenses')|number:2}</td>
+            <td>{$trip->sumExpenses('beddingExpenses')|number:2}</td>
+            <td>{$trip->sumExpenses('foodServings')|number}</td>
+            <td>{$trip->sumExpenses('foodExpenses')|number:2}</td>
             <td></td>
+            <td>{$trip->getTotalExpenses()|number:2}</td>
         </tr>
 
         <tr class="spacer"></tr>

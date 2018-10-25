@@ -194,4 +194,13 @@ class TripSegment extends BaseEntity
         return $this;
     }
 
+    /**
+     * @return float
+     */
+    public function getTotalExpenses()
+    {
+        return $this->expenses->beddingExpenses + $this->expenses->foodExpenses + $this->expenses->otherExpenses +
+            ($this->extra ? $this->extra->expense : 0);
+    }
+
 }
