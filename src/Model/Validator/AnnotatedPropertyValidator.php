@@ -26,7 +26,7 @@ class AnnotatedPropertyValidator
     private function validateObject($object, array &$errors, $parentPath = "")
     {
         $rc = $this->getReflectionClass(get_class($object));
-        $currentPath = "$parentPath." . $rc->getShortName();
+        $currentPath = "$parentPath~" . $rc->getShortName();
         $propertySpecs = $this->getPropertySpecs($rc);
 
         foreach ($propertySpecs as $spec) {

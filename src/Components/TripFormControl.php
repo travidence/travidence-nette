@@ -22,10 +22,11 @@ class TripFormControl extends Control
         $traveller = $form->addContainer('traveller');
         $traveller->addText("name", "Jméno");
         $traveller->addText("surname", "Přijmení");
-        $traveller->addText("work_place", "Místo výkonu práce");
+        $traveller->addText("workStation", "Místo výkonu práce");
         $traveller->addText("department", "Oddělení");
 
-        $segment = $form->addContainer('segment');
+        $segments = $form->addContainer('segments');
+        $segment = $segments->addContainer('0');
         $segment->addDate("date", "Datum");
         $segment->addText("purpose", "Cíl cesty");
         $segment->addText("startPlace", "Místo");
