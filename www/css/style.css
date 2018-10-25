@@ -63,6 +63,18 @@ td {
 
 }
 
+.trip-segment {
+    margin-bottom: 12px;
+}
+
+.trip-segment .btn-remove-segment {
+    display: none;
+}
+
+.trip-segment:last-child:not(:first-child) .btn-remove-segment {
+    display: initial;
+}
+
 /* footer stuff */
 .footer {
     position: fixed;

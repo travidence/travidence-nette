@@ -1,3 +1,8 @@
 {block content}
 <h1>Cestovní příkaz</h1>
 {control tripForm}
+
+{block script}
+    {include parent}
+    <script src="{$basePath}/js/tripFormController.js"></script>
+{/block}

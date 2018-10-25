@@ -1,9 +1,4 @@
-var element;
-
-
 $().ready(function () {
-    element = document.getElementsByClassName("greyzone")[0];
-
     /*$("btn").click(function () {
         var elements = $(".greyzone");
         var last = elements[elements.length - 1];
@@ -11,61 +6,34 @@ $().ready(function () {
         console.log(element);
     });*/
 
-    $('.btn-submit-trip').on('click', function (event) {
-        event.preventDefault();
+    window.rest = new RestAdapter();
 
-        var data = collectFormData($('#frm-tripForm-form'));
+    function RestAdapter(baseUrl) {
+        this.$baseUrl = baseUrl || '';
 
-        $.post({
-            url: '/api/trip',
-            data: JSON.stringify({trip: data})
-        })
-            .then(function (result) {
-                console.log(result);
-            })
-            .catch(function (error) {
-                console.error(error.responseJSON.data);
+
+        this.post = function (path, data) {
+            return this.request('POST', path, data)
+                .then(unwrapResponse);
+        };
+
+        this.request = function request(method, path, data) {
+            return $.ajax({
+                method: method,
+                url: this.$baseUrl + '/' + path,
+                data: JSON.stringify(data)
             });
-    });
+        };
 
-    function collectFormData(form) {
-        var data = form.serializeObject();
-        console.log(form[0]);
-
-        data.segments = data.segments.map(function (/**Object*/ segment, i) {
-            var date = segment.date;
-
-            var startTime = segment.startTime;
-            var endTime = segment.endTime;
-
-            if(!date) {
-                throw new Error("value_invalid segment[" + i + "].date");
-            }
-            if(!startTime) {
-                throw new Error("value_invalid segment[" + i + "].startTime");
-            }
-            if(!endTime) {
-                throw new Error("value_invalid segment[" + i + "].endTime");
-            }
-
-            console.groupCollapsed("Segment " + i);
-            console.log(date);
-            console.log(startTime, endTime);
-            console.groupEnd();
-
-            segment.startDate = date + " " + startTime;
-            segment.endDate = date + " " + startTime;
-
-            delete segment.startTime;
-            delete segment.endTime;
-
-            return segment;
-        });
-
-
-        console.log(data);
-
-        return data;
+        function unwrapResponse(promise) {
+            return promise
+                .then(function (result) {
+                    return result;
+                })
+                .catch(function (error) {
+                    throw error.responseJSON.data;
+                });
+        }
     }
 
     /**
